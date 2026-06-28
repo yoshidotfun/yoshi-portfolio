@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIペルソナによるRAG評価システム | yoshi Portfolio</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
+    <nav>
+      <a href="index.html" class="nav-link">Top</a>
+      <a href="works.html" class="nav-link active">Works</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="about.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-item">
+      <div class="detail-visual">
+        <div class="visual photo">
+          <img src="assets/%E3%83%9A%E3%83%AB%E3%82%BD%E3%83%8A.png" alt="AIペルソナによるRAG評価システム">
+          <span class="num serif">03</span>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="work-meta">Work 03 — AI / RAG</div>
+        <h2>AIペルソナによるRAG評価システム</h2>
+        <div class="role">個人開発</div>
+        <p>大規模ペルソナデータセットからサンプリングした人物像に対して、RAG（Retrieval-Augmented Generation）システムの回答が適切かを自動評価するパイプライン。ペルソナごとの属性（年齢・職業・関心など）を自然文に変換してプロンプトに組み込み、模擬インタビューや質問応答シミュレーションを実行する。</p>
+        <p>1.7GB規模のデータセットをストリーミングで取得し、全件をダウンロードせずに必要件数だけサンプリングすることで、評価コストを抑えながら多様なペルソナを検証できるようにした。評価結果はCSVに蓄積し、回答品質の傾向分析に利用できる形に整備している。</p>
+        <ul class="feat-list">
+          <li>大規模データセットのストリーミングサンプリング</li>
+          <li>ペルソナ属性のプロンプト自動生成</li>
+          <li>模擬インタビュー・質問応答シミュレーション</li>
+          <li>LLM APIを用いた回答品質の自動評価</li>
+          <li>評価結果の自動集計・CSV出力</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Python</span>
+          <span class="tech">RAG</span>
+          <span class="tech">LLM API</span>
+          <span class="tech">pandas</span>
+          <span class="tech">データセットストリーミング</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="detail-pager">
+  <a href="work-tradearea.html">&larr; Prev</a>
+  <a href="works.html" class="back">All Works</a>
+  <a href="work-execbot.html">Next &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">yoshi</a>
+    <nav class="footer-nav">
+      <a href="index.html">Top</a>
+      <a href="works.html">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>Individual Developer Portfolio</span>
+    <span>&copy; 2026 yoshi. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

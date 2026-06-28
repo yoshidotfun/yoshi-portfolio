@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI物体検出による動画自動編集ツール | yoshi Portfolio</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
+    <nav>
+      <a href="index.html" class="nav-link">Top</a>
+      <a href="works.html" class="nav-link active">Works</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="about.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-item">
+      <div class="detail-visual">
+        <div class="visual photo">
+          <img src="assets/%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF.png" alt="AutoMosaic - AI物体検出による動画自動編集ツール">
+          <span class="num serif">01</span>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="work-meta">Work 01 — Computer Vision</div>
+        <h2>AI物体検出による動画自動編集ツール</h2>
+        <div class="role">個人開発（企画・検出ロジック設計・GUI実装・配布基盤構築）</div>
+        <p>EfficientNet系の軽量CNNモデルを採用し、動画内の対象領域をリアルタイムで検出・マスキング処理するデスクトップアプリケーション。平均適合度（mAP）0.85〜0.92の高精度を保ちながら、1フレーム当たり10〜50msの処理速度を実現。誤検出率は5%未満に抑制している。</p>
+        <p>単純な検出では「ちらつき」が発生するため、時間軸方向の追跡とヒステリシス機構を導入。一度検出した領域はスコアが低下しても追跡継続し、最大2秒分のフレーム欠落を自動補間する。さらに線形補間でモザイク位置を滑らかに移動させ、パディング機構でトラック開始・終了時の違和感を排除。ブロックサイズ調整可能な適応的ピクセル化により、プライバシー保護レベルを自由にコントロール可能。</p>
+        <p>GUIはTkinter製で、動画のドラッグ&amp;ドロップ読み込みに対応。ライセンスキー認証とオンライン検証、Webhookによる配布管理まで一貫して構築し、PyInstallerでexe化して配布可能な状態に仕上げている。</p>
+        <ul class="feat-list">
+          <li>EfficientNet系CNN による高精度検出（mAP 0.85〜0.92）</li>
+          <li>時間軸トラッキング + ヒステリシス機構でちらつき軽減</li>
+          <li>最大2秒分のフレーム欠落を自動補間（ギャップブリッジング）</li>
+          <li>線形補間によるモザイク位置の滑らかな移動</li>
+          <li>パディング機構で自然な処理開始・終了（0.3秒延長）</li>
+          <li>ブロックサイズ調整可能な適応的ピクセル化</li>
+          <li>ドラッグ&amp;ドロップ対応のGUIアプリ、リアルタイム処理</li>
+          <li>ライセンスキー認証・オンライン検証・Webhook配布管理</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Python</span>
+          <span class="tech">EfficientNet</span>
+          <span class="tech">OpenCV</span>
+          <span class="tech">物体検出（YOLO系）</span>
+          <span class="tech">トラッキング</span>
+          <span class="tech">Tkinter (GUI)</span>
+          <span class="tech">PyInstaller</span>
+          <span class="tech">ライセンス認証</span>
+          <span class="tech">Webhook</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="detail-pager">
+  <a href="work-pet.html">&larr; Prev</a>
+  <a href="works.html" class="back">All Works</a>
+  <a href="work-tradearea.html">Next &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">yoshi</a>
+    <nav class="footer-nav">
+      <a href="index.html">Top</a>
+      <a href="works.html">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>Individual Developer Portfolio</span>
+    <span>&copy; 2026 yoshi. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

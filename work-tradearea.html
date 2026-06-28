@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商圏・カニバリ分析ダッシュボード | yoshi Portfolio</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
+    <nav>
+      <a href="index.html" class="nav-link">Top</a>
+      <a href="works.html" class="nav-link active">Works</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="about.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-item">
+      <div class="detail-visual">
+        <div class="visual photo">
+          <img src="assets/%E5%95%86%E5%9C%8F.png" alt="商圏・カニバリ分析ダッシュボード">
+          <span class="num serif">02</span>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="work-meta">Work 02 — Geospatial Analysis</div>
+        <h2>商圏・カニバリ分析ダッシュボード</h2>
+        <div class="role">個人開発（分析エンジン設計・API統合・インタラクティブ可視化）</div>
+        <p>店舗の新規出店や既存店との商圏重複（カニバリゼーション）を可視化するStreamlit製の分析ダッシュボード。複合的な商圏分析エンジンを実装し、Voronoi図（最寄り店舗による自動分割）、Huffモデル（距離と魅力度に基づく顧客獲得確率）、イソクロン解析（実道路ネットワークによる到達時間圏）の3手法を組み合わせることで、複数の観点から商圏を多角的に検証できるようにした。</p>
+        <p>データ入力の柔軟性を重視し、公式サイトからの自動スクレイピング、CSVアップロード、テキスト手動入力に対応。Overpass APIで競合店舗を自動検出し、Google Maps APIから評価スコアとレビュー数を取得、ベイズ平均で正規化した魅力度スコアを算出。都市部・郊外・地方の地域特性に応じた商圏半径の自動調整機能も実装し、リアルタイムなカニバリ統計サマリーをインタラクティブなFoliumマップで表示する。</p>
+        <ul class="feat-list">
+          <li>複合商圏分析エンジン（Voronoi・Huff・イソクロン）による多角的検証</li>
+          <li>Huffモデル：距離と魅力度による顧客獲得確率推計</li>
+          <li>イソクロン解析：実道路ネットワークを利用した到達時間圏の可視化</li>
+          <li>Overpass APIによる競合店舗の自動検出と分類</li>
+          <li>Google Maps連携：評価スコア・レビュー数の自動取得</li>
+          <li>ベイズ平均による正規化された魅力度スコア算出</li>
+          <li>柔軟なデータ入力（スクレイピング・CSV・手動入力対応）</li>
+          <li>地域特性（都市部・郊外・地方）に応じた商圏半径の自動調整</li>
+          <li>リアルタイムカニバリ統計とFoliumマップによる対話型ダッシュボード</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Python</span>
+          <span class="tech">Streamlit</span>
+          <span class="tech">Folium</span>
+          <span class="tech">Shapely</span>
+          <span class="tech">Voronoi分析</span>
+          <span class="tech">Huffモデル</span>
+          <span class="tech">イソクロン解析</span>
+          <span class="tech">Overpass API</span>
+          <span class="tech">Google Maps API</span>
+          <span class="tech">ベイズ平均</span>
+          <span class="tech">Web スクレイピング</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="detail-pager">
+  <a href="work-automosaic.html">&larr; Prev</a>
+  <a href="works.html" class="back">All Works</a>
+  <a href="work-persona.html">Next &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">yoshi</a>
+    <nav class="footer-nav">
+      <a href="index.html">Top</a>
+      <a href="works.html">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>Individual Developer Portfolio</span>
+    <span>&copy; 2026 yoshi. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

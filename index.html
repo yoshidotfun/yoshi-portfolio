@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yoshi | Portfolio — 個人開発の作品集</title>
+  <meta name="description" content="yoshiの個人ポートフォリオ。AI・画像処理・地理空間分析・ブラウザ拡張機能など、幅広い領域で開発したツール・プロダクトを紹介します。">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
+    <nav>
+      <a href="index.html" class="nav-link active">Top</a>
+      <a href="works.html" class="nav-link">Works</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="about.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">yoshi — Individual Developer</div>
+  <h1>アイデアを、<br><b>動くプロダクトにする。</b></h1>
+  <p>企画から設計・実装・配布までを一人で担当し、AI・画像処理・地理空間分析・ブラウザ拡張機能など、幅広い領域でツールを開発しています。ここでは、これまで手がけた作品の一部を紹介します。</p>
+  <div class="hero-actions">
+    <a href="works.html" class="btn btn-dark">作品を見る</a>
+    <a href="about.html" class="btn btn-outline">About</a>
+  </div>
+</section>
+
+<!-- SELECTED WORKS -->
+<section class="work-grid-section">
+  <div class="work-grid-inner">
+    <div class="page-head" style="padding:0 0 48px; border-bottom:none;">
+      <div class="eyebrow">Selected Works</div>
+      <h1 style="font-size:clamp(1.6rem,3.6vw,2.2rem);">代表的な作品</h1>
+    </div>
+
+    <div class="work-grid">
+
+      <a href="work-tradearea.html" class="work-card">
+        <div class="visual photo">
+          <img src="assets/%E5%95%86%E5%9C%8F.png" alt="商圏・カニバリ分析ダッシュボード">
+          <span class="num serif">02</span>
+        </div>
+        <div class="tag-line">Geospatial Analysis</div>
+        <h3>商圏・カニバリ分析ダッシュボード</h3>
+        <p class="desc">Huffモデル・Voronoi・アイソクロンで店舗の商圏を可視化。</p>
+        <div class="tech-row">
+          <span class="tech">Streamlit</span><span class="tech">Folium</span>
+        </div>
+      </a>
+
+      <a href="work-persona.html" class="work-card">
+        <div class="visual photo">
+          <img src="assets/%E3%83%9A%E3%83%AB%E3%82%BD%E3%83%8A.png" alt="AIペルソナによるRAG評価システム">
+          <span class="num serif">03</span>
+        </div>
+        <div class="tag-line">AI / RAG</div>
+        <h3>AIペルソナによるRAG評価システム</h3>
+        <p class="desc">合成ペルソナを用いてRAGの回答品質を自動評価するパイプライン。</p>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">LLM</span>
+        </div>
+      </a>
+
+      <a href="work-execbot.html" class="work-card">
+        <div class="visual p5"><span class="num serif">04</span></div>
+        <div class="tag-line">AI Roleplay</div>
+        <h3>AI重役ロールプレイボット</h3>
+        <p class="desc">発言記録を再現し、提案に鋭い質問を投げるプレゼン練習ツール。</p>
+        <div class="tech-row">
+          <span class="tech">Claude API</span><span class="tech">Prompt Eng.</span>
+        </div>
+      </a>
+
+      <a href="work-shorts.html" class="work-card">
+        <div class="visual p6"><span class="num serif">05</span></div>
+        <div class="tag-line">Content Automation</div>
+        <h3>動画自動生成パイプライン</h3>
+        <p class="desc">台本生成から音声合成・動画編集までを自動化するツール。</p>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">TTS</span>
+        </div>
+      </a>
+
+      <a href="work-pet.html" class="work-card">
+        <div class="visual photo">
+          <img src="assets/pet-extension.gif" alt="pet-extension">
+          <span class="num serif">06</span>
+        </div>
+        <div class="tag-line">Browser Extension</div>
+        <h3>視聴ナッジ用Chrome拡張機能</h3>
+        <p class="desc">見すぎるとペットが現れる、デジタルウェルビーイング系拡張。</p>
+        <div class="tech-row">
+          <span class="tech">Chrome Ext.</span><span class="tech">JavaScript</span>
+        </div>
+      </a>
+
+      <a href="work-automosaic.html" class="work-card">
+        <div class="visual photo">
+          <img src="assets/%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF.png" alt="AutoMosaic - AI物体検出による動画自動編集ツール">
+          <span class="num serif">01</span>
+        </div>
+        <div class="tag-line">Computer Vision</div>
+        <h3>AI物体検出による動画自動編集ツール</h3>
+        <p class="desc">対象領域をフレーム単位で検出し、自動編集するデスクトップアプリ。</p>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">OpenCV</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- MORE / CTA -->
+<section class="more">
+  <div class="inner">
+    <h3>一緒に<b>「作る」</b>話をしませんか？</h3>
+    <p>業務の自動化、AIを使ったツール開発、Web制作など、お気軽にご相談ください。</p>
+    <a href="about.html#contact" class="btn btn-dark">お問い合わせ</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">yoshi</a>
+    <nav class="footer-nav">
+      <a href="index.html">Top</a>
+      <a href="works.html">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>Individual Developer Portfolio</span>
+    <span>&copy; 2026 yoshi. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
