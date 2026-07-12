@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>動画自動生成パイプライン | yoshi Portfolio</title>
+  <meta name="description" content="台本生成から音声合成・動画編集・サムネイル作成までを一気通貫で自動化する、ショート動画コンテンツの生成パイプライン。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="動画自動生成パイプライン | yoshi Portfolio">
+  <meta property="og:description" content="台本生成から音声合成・動画編集・サムネイル作成までを一気通貫で自動化。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link active">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -30,8 +42,8 @@
         <div class="work-meta">Work 05 — Content Automation</div>
         <h2>動画自動生成パイプライン</h2>
         <div class="role">個人開発</div>
-        <p>台本生成から音声合成、動画編集、サムネイル作成までを一気通貫で自動化した、ショート動画コンテンツの生成パイプライン。テーマに応じた台本をテキストで生成し、音声合成エンジンでナレーションを作成、画像・素材を組み合わせて動画を自動編集する。</p>
-        <p>制作したツールを実際に使える形として提供することを想定し、訴求用のランディングページも作成。台本生成から書き出しまでの工程を一人で構築した。</p>
+        <p>ショート動画の制作を、台本生成から音声合成・動画編集・サムネイル作成まで一気通貫で自動化するパイプラインです。テーマを与えるだけで、動画を書き出せる状態まで自動で進みます。</p>
+        <p>ツールとして提供することを想定し、訴求用のランディングページも制作。企画から実装・LP公開までの工程を一人で構築しました。</p>
         <ul class="feat-list">
           <li>テーマ別の台本自動生成</li>
           <li>音声合成によるナレーション作成</li>

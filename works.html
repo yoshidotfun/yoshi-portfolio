@@ -5,14 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Works | yoshi Portfolio</title>
   <meta name="description" content="yoshiが開発した作品の一覧。AI・画像処理・地理空間分析・ブラウザ拡張機能など。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="Works | yoshi Portfolio">
+  <meta property="og:description" content="yoshiが開発した作品の一覧。AI・画像処理・地理空間分析・ブラウザ拡張機能など。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link active">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -31,8 +42,11 @@
   <div class="work-grid-inner">
     <div class="work-grid">
 
-      <a href="work-automosaic.html" class="work-card">
-        <div class="visual p1"><span class="num serif">01</span></div>
+      <a href="work-automosaic.html" class="work-card reveal">
+        <div class="visual photo">
+          <img src="assets/%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF.png" alt="AutoMosaic - AI物体検出による動画自動編集ツール" loading="lazy" decoding="async">
+          <span class="num serif">01</span>
+        </div>
         <div class="tag-line">Computer Vision</div>
         <h3>AI物体検出による動画自動編集ツール</h3>
         <p class="desc">対象領域をフレーム単位で検出し、自動編集するデスクトップアプリ。ライセンス認証・配布まで構築。</p>
@@ -41,8 +55,11 @@
         </div>
       </a>
 
-      <a href="work-tradearea.html" class="work-card">
-        <div class="visual p3"><span class="num serif">02</span></div>
+      <a href="work-tradearea.html" class="work-card reveal">
+        <div class="visual photo">
+          <img src="assets/%E5%95%86%E5%9C%8F.png" alt="商圏・カニバリ分析ダッシュボード" loading="lazy" decoding="async">
+          <span class="num serif">02</span>
+        </div>
         <div class="tag-line">Geospatial Analysis</div>
         <h3>商圏・カニバリ分析ダッシュボード</h3>
         <p class="desc">Huffモデル・Voronoi・アイソクロンで店舗の商圏重複を可視化するStreamlitアプリ。</p>
@@ -51,8 +68,11 @@
         </div>
       </a>
 
-      <a href="work-persona.html" class="work-card">
-        <div class="visual p4"><span class="num serif">03</span></div>
+      <a href="work-persona.html" class="work-card reveal">
+        <div class="visual photo">
+          <img src="assets/%E3%83%9A%E3%83%AB%E3%82%BD%E3%83%8A.png" alt="AIペルソナによるRAG評価システム" loading="lazy" decoding="async">
+          <span class="num serif">03</span>
+        </div>
         <div class="tag-line">AI / RAG</div>
         <h3>AIペルソナによるRAG評価システム</h3>
         <p class="desc">大規模ペルソナデータセットを用いてRAGの回答品質を自動評価するパイプライン。</p>
@@ -61,7 +81,7 @@
         </div>
       </a>
 
-      <a href="work-execbot.html" class="work-card">
+      <a href="work-execbot.html" class="work-card reveal">
         <div class="visual p5"><span class="num serif">04</span></div>
         <div class="tag-line">AI Roleplay</div>
         <h3>AI重役ロールプレイボット</h3>
@@ -71,7 +91,7 @@
         </div>
       </a>
 
-      <a href="work-shorts.html" class="work-card">
+      <a href="work-shorts.html" class="work-card reveal">
         <div class="visual p6"><span class="num serif">05</span></div>
         <div class="tag-line">Content Automation</div>
         <h3>動画自動生成パイプライン</h3>
@@ -81,9 +101,9 @@
         </div>
       </a>
 
-      <a href="work-pet.html" class="work-card">
+      <a href="work-pet.html" class="work-card reveal">
         <div class="visual photo">
-          <img src="assets/pet-frame.jpg" alt="pet-extension">
+          <img src="assets/pet-frame.jpg" alt="視聴ナッジ用Chrome拡張機能 - 画面に現れるペット" loading="lazy" decoding="async">
           <span class="num serif">06</span>
         </div>
         <div class="tag-line">Browser Extension</div>

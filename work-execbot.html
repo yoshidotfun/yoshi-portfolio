@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI重役ロールプレイボット | yoshi Portfolio</title>
+  <meta name="description" content="実際の発言記録をもとに「厳しい質問をする役」をAIで再現するプレゼン練習ツール。バイアス・比較可能性・ROIなど複数の観点から仮説提示型の質問を自動生成。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="AI重役ロールプレイボット | yoshi Portfolio">
+  <meta property="og:description" content="実発言記録に基づき、提案資料へ鋭い質問を投げるAIロールプレイボット。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link active">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -30,8 +42,8 @@
         <div class="work-meta">Work 04 — AI Roleplay</div>
         <h2>AI重役ロールプレイボット</h2>
         <div class="role">個人開発</div>
-        <p>実際の発言記録をもとに「厳しい質問をする役」をAIで再現するツール。提案やプレゼン資料に対して、選択バイアス・比較可能性・指標の妥当性・ROIなど、複数の観点から仮説提示型の質問を自動生成する。</p>
-        <p>事前に蓄積した発言メモをシステムプロンプトに組み込むことで、特定人物の質問スタイルや口調を再現。一度に複数の質問を投げかけ、回答に対してさらに掘り下げる対話形式を実装し、プレゼン前の壁打ち相手として機能するように設計した。</p>
+        <p>実在の発言記録をもとに「厳しい質問をする重役」をAIで再現した、プレゼン練習ツールです。提案資料に対して、バイアス・比較可能性・ROIなど複数の観点から鋭い質問を自動生成します。</p>
+        <p>蓄積した発言メモをシステムプロンプトに組み込み、質問のスタイルや口調まで再現。回答にはさらに深掘りの質問が返ってくる対話形式で、本番前の壁打ち相手として機能します。</p>
         <ul class="feat-list">
           <li>実発言記録に基づくスタイル・口調の再現</li>
           <li>観点別（バイアス・比較可能性・ROIなど）の自動質問生成</li>

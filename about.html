@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | yoshi Portfolio</title>
+  <meta name="description" content="個人開発者yoshiのプロフィール。Web制作からAI/LLM活用ツール、デスクトップアプリ、ブラウザ拡張機能まで、企画から配布までを一人で担当。">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="About | yoshi Portfolio">
+  <meta property="og:description" content="個人開発者yoshiのプロフィール。企画・設計・実装・配布までを一人で担当しています。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link">Works</a>
       <a href="about.html" class="nav-link active">About</a>
@@ -23,7 +35,7 @@
 <section class="page-head">
   <div class="eyebrow">About</div>
   <h1>yoshi</h1>
-  <p>個人開発者</p>
+  <p>AIエンジニア×人事</p>
 </section>
 
 <section class="about-section">
@@ -32,7 +44,11 @@
       <div class="avatar">y</div>
     </div>
     <div class="about-body">
-      <p>個人開発者として、Webサイト制作からAI／LLMを活用したツール開発、デスクトップアプリ、ブラウザ拡張機能まで、幅広い技術領域でプロダクトを開発しています。企画・設計・実装・配布までを一人で担当し、課題解決につながる実用的なツールを形にすることを得意としています。</p>
+      <p>これまでの経歴。</p>
+      <p>2020～2023年:日用品メーカーでIOT製品開発など扱う</p>
+      <p>2024～2025年:新規事業領域の立ち上げに携わる</p>
+　　　<p>2025～人材会社で需要予測モデル開発など手掛ける傍ら個人でもアプリケーションの開発などにも挑戦</p>
+
       <p>特定の技術や業界に絞らず、画像処理・地理空間分析・自動化・AIエージェントなど、必要に応じて新しい技術領域にも踏み出しながら開発を続けています。</p>
 
       <div class="skill-row">
@@ -49,7 +65,7 @@
       <div class="contact-box" id="contact">
         <h3>お問い合わせ</h3>
         <p>開発のご相談・お仕事のご依頼など、お気軽にご連絡ください。</p>
-        <a href="#" class="btn btn-dark">お問い合わせフォームへ</a>
+        <a href="mailto:blightlight837@gmail.com" class="btn btn-dark">メールで問い合わせる</a>
       </div>
     </div>
   </div>

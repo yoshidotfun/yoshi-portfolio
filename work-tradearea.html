@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>商圏・カニバリ分析ダッシュボード | yoshi Portfolio</title>
+  <meta name="description" content="Voronoi図・Huffモデル・イソクロン解析の3手法で店舗の商圏重複（カニバリゼーション）を多角的に可視化するStreamlit製の分析ダッシュボード。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="商圏・カニバリ分析ダッシュボード | yoshi Portfolio">
+  <meta property="og:description" content="Voronoi・Huffモデル・イソクロン解析で店舗の商圏重複を可視化するStreamlit製ダッシュボード。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link active">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -33,8 +45,8 @@
         <div class="work-meta">Work 02 — Geospatial Analysis</div>
         <h2>商圏・カニバリ分析ダッシュボード</h2>
         <div class="role">個人開発（分析エンジン設計・API統合・インタラクティブ可視化）</div>
-        <p>店舗の新規出店や既存店との商圏重複（カニバリゼーション）を可視化するStreamlit製の分析ダッシュボード。複合的な商圏分析エンジンを実装し、Voronoi図（最寄り店舗による自動分割）、Huffモデル（距離と魅力度に基づく顧客獲得確率）、イソクロン解析（実道路ネットワークによる到達時間圏）の3手法を組み合わせることで、複数の観点から商圏を多角的に検証できるようにした。</p>
-        <p>データ入力の柔軟性を重視し、公式サイトからの自動スクレイピング、CSVアップロード、テキスト手動入力に対応。Overpass APIで競合店舗を自動検出し、Google Maps APIから評価スコアとレビュー数を取得、ベイズ平均で正規化した魅力度スコアを算出。都市部・郊外・地方の地域特性に応じた商圏半径の自動調整機能も実装し、リアルタイムなカニバリ統計サマリーをインタラクティブなFoliumマップで表示する。</p>
+        <p>新規出店や既存店同士の商圏の重なり（カニバリゼーション）を、地図上で可視化する分析ダッシュボードです。Voronoi図・Huffモデル・イソクロン解析の3手法を組み合わせ、ひとつの商圏を多角的に検証できます。</p>
+        <p>競合店舗はOverpass APIで自動検出し、Google Mapsの評価データから店舗の魅力度スコアを算出。CSVアップロードや自動スクレイピングなど柔軟なデータ入力に対応し、分析結果は対話型マップで直感的に確認できます。</p>
         <ul class="feat-list">
           <li>複合商圏分析エンジン（Voronoi・Huff・イソクロン）による多角的検証</li>
           <li>Huffモデル：距離と魅力度による顧客獲得確率推計</li>

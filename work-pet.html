@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>視聴ナッジ用Chrome拡張機能 | yoshi Portfolio</title>
+  <meta name="description" content="YouTubeやXを長時間見続けると画面にペットが現れて行動を促すChrome拡張機能（Manifest V3）。デジタルウェルビーイングをユーモラスな体験に。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="視聴ナッジ用Chrome拡張機能 | yoshi Portfolio">
+  <meta property="og:description" content="YouTube/Xの見すぎを検知し、ペットが画面に現れるデジタルウェルビーイング拡張。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link active">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -25,7 +37,7 @@
     <div class="detail-item">
       <div class="detail-visual">
         <div class="visual photo">
-          <img src="assets/pet-extension.gif" alt="pet-extension">
+          <video src="assets/pet-extension.mp4" autoplay muted loop playsinline poster="assets/pet-frame.jpg" aria-label="視聴ナッジ用Chrome拡張機能のデモ動画"></video>
           <span class="num serif">06</span>
         </div>
       </div>
@@ -33,8 +45,8 @@
         <div class="work-meta">Work 06 — Browser Extension</div>
         <h2>視聴ナッジ用Chrome拡張機能</h2>
         <div class="role">個人開発</div>
-        <p>YouTubeやX（旧Twitter）を長時間見続けると、画面にペットが現れて行動を促すChrome拡張機能。Manifest V3に対応し、Service WorkerとContent Scriptで視聴時間を計測。一定時間を超えると、アルファチャンネル付き動画を画面上にオーバーレイ表示する。</p>
-        <p>デジタルウェルビーイングという少し堅いテーマを、ユーモラスな体験に落とし込んだ個人開発プロダクト。動画素材はアルファチャンネル変換のスクリプトを別途作成し、背景を透過した状態でWeb上に重ねられるよう加工している。</p>
+        <p>YouTubeやXを見すぎると、画面にペットが現れて休憩を促すChrome拡張機能です。Service Workerで視聴時間を計測し、一定時間を超えると背景が透過した動画をページ上にオーバーレイ表示します（Manifest V3対応）。</p>
+        <p>デジタルウェルビーイングという堅いテーマを、ユーモラスな体験に落とし込みました。動画素材は自作スクリプトでアルファチャンネル変換し、Webページに自然に重ねられるよう加工しています。</p>
         <ul class="feat-list">
           <li>視聴時間の計測とアラーム管理（Service Worker）</li>
           <li>アルファチャンネル動画のオーバーレイ表示</li>

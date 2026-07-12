@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>yoshi | Portfolio — 個人開発の作品集</title>
   <meta name="description" content="yoshiの個人ポートフォリオ。AI・画像処理・地理空間分析・ブラウザ拡張機能など、幅広い領域で開発したツール・プロダクトを紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="yoshi | Portfolio — 個人開発の作品集">
+  <meta property="og:description" content="AI・画像処理・地理空間分析・ブラウザ拡張機能など、幅広い領域で開発したツール・プロダクトを紹介します。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "yoshi",
+    "jobTitle": "Individual Developer",
+    "description": "AI・画像処理・地理空間分析・ブラウザ拡張機能など、幅広い領域でツールを開発する個人開発者。",
+    "knowsAbout": ["Python", "JavaScript", "LLM", "RAG", "Computer Vision", "Geospatial Analysis"]
+  }
+  </script>
 </head>
 <body>
 
@@ -13,7 +31,10 @@
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link active">Top</a>
       <a href="works.html" class="nav-link">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -25,7 +46,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="eyebrow">yoshi — Individual Developer</div>
-  <h1>アイデアを、<br><b>動くプロダクトにする。</b></h1>
+  <h1>アイデアを、<br><b>即実装！</b></h1>
   <p>企画から設計・実装・配布までを一人で担当し、AI・画像処理・地理空間分析・ブラウザ拡張機能など、幅広い領域でツールを開発しています。ここでは、これまで手がけた作品の一部を紹介します。</p>
   <div class="hero-actions">
     <a href="works.html" class="btn btn-dark">作品を見る</a>
@@ -43,68 +64,9 @@
 
     <div class="work-grid">
 
-      <a href="work-tradearea.html" class="work-card">
+      <a href="work-automosaic.html" class="work-card reveal">
         <div class="visual photo">
-          <img src="assets/%E5%95%86%E5%9C%8F.png" alt="商圏・カニバリ分析ダッシュボード">
-          <span class="num serif">02</span>
-        </div>
-        <div class="tag-line">Geospatial Analysis</div>
-        <h3>商圏・カニバリ分析ダッシュボード</h3>
-        <p class="desc">Huffモデル・Voronoi・アイソクロンで店舗の商圏を可視化。</p>
-        <div class="tech-row">
-          <span class="tech">Streamlit</span><span class="tech">Folium</span>
-        </div>
-      </a>
-
-      <a href="work-persona.html" class="work-card">
-        <div class="visual photo">
-          <img src="assets/%E3%83%9A%E3%83%AB%E3%82%BD%E3%83%8A.png" alt="AIペルソナによるRAG評価システム">
-          <span class="num serif">03</span>
-        </div>
-        <div class="tag-line">AI / RAG</div>
-        <h3>AIペルソナによるRAG評価システム</h3>
-        <p class="desc">合成ペルソナを用いてRAGの回答品質を自動評価するパイプライン。</p>
-        <div class="tech-row">
-          <span class="tech">Python</span><span class="tech">LLM</span>
-        </div>
-      </a>
-
-      <a href="work-execbot.html" class="work-card">
-        <div class="visual p5"><span class="num serif">04</span></div>
-        <div class="tag-line">AI Roleplay</div>
-        <h3>AI重役ロールプレイボット</h3>
-        <p class="desc">発言記録を再現し、提案に鋭い質問を投げるプレゼン練習ツール。</p>
-        <div class="tech-row">
-          <span class="tech">Claude API</span><span class="tech">Prompt Eng.</span>
-        </div>
-      </a>
-
-      <a href="work-shorts.html" class="work-card">
-        <div class="visual p6"><span class="num serif">05</span></div>
-        <div class="tag-line">Content Automation</div>
-        <h3>動画自動生成パイプライン</h3>
-        <p class="desc">台本生成から音声合成・動画編集までを自動化するツール。</p>
-        <div class="tech-row">
-          <span class="tech">Python</span><span class="tech">TTS</span>
-        </div>
-      </a>
-
-      <a href="work-pet.html" class="work-card">
-        <div class="visual photo">
-          <img src="assets/pet-extension.gif" alt="pet-extension">
-          <span class="num serif">06</span>
-        </div>
-        <div class="tag-line">Browser Extension</div>
-        <h3>視聴ナッジ用Chrome拡張機能</h3>
-        <p class="desc">見すぎるとペットが現れる、デジタルウェルビーイング系拡張。</p>
-        <div class="tech-row">
-          <span class="tech">Chrome Ext.</span><span class="tech">JavaScript</span>
-        </div>
-      </a>
-
-      <a href="work-automosaic.html" class="work-card">
-        <div class="visual photo">
-          <img src="assets/%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF.png" alt="AutoMosaic - AI物体検出による動画自動編集ツール">
+          <img src="assets/%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF.png" alt="AutoMosaic - AI物体検出による動画自動編集ツール" loading="lazy" decoding="async">
           <span class="num serif">01</span>
         </div>
         <div class="tag-line">Computer Vision</div>
@@ -115,6 +77,65 @@
         </div>
       </a>
 
+      <a href="work-tradearea.html" class="work-card reveal">
+        <div class="visual photo">
+          <img src="assets/%E5%95%86%E5%9C%8F.png" alt="商圏・カニバリ分析ダッシュボード" loading="lazy" decoding="async">
+          <span class="num serif">02</span>
+        </div>
+        <div class="tag-line">Geospatial Analysis</div>
+        <h3>商圏・カニバリ分析ダッシュボード</h3>
+        <p class="desc">Huffモデル・Voronoi・アイソクロンで店舗の商圏を可視化。</p>
+        <div class="tech-row">
+          <span class="tech">Streamlit</span><span class="tech">Folium</span>
+        </div>
+      </a>
+
+      <a href="work-persona.html" class="work-card reveal">
+        <div class="visual photo">
+          <img src="assets/%E3%83%9A%E3%83%AB%E3%82%BD%E3%83%8A.png" alt="AIペルソナによるRAG評価システム" loading="lazy" decoding="async">
+          <span class="num serif">03</span>
+        </div>
+        <div class="tag-line">AI / RAG</div>
+        <h3>AIペルソナによるRAG評価システム</h3>
+        <p class="desc">合成ペルソナを用いてRAGの回答品質を自動評価するパイプライン。</p>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">LLM</span>
+        </div>
+      </a>
+
+      <a href="work-execbot.html" class="work-card reveal">
+        <div class="visual p5"><span class="num serif">04</span></div>
+        <div class="tag-line">AI Roleplay</div>
+        <h3>AI重役ロールプレイボット</h3>
+        <p class="desc">発言記録を再現し、提案に鋭い質問を投げるプレゼン練習ツール。</p>
+        <div class="tech-row">
+          <span class="tech">Claude API</span><span class="tech">Prompt Eng.</span>
+        </div>
+      </a>
+
+      <a href="work-shorts.html" class="work-card reveal">
+        <div class="visual p6"><span class="num serif">05</span></div>
+        <div class="tag-line">Content Automation</div>
+        <h3>動画自動生成パイプライン</h3>
+        <p class="desc">台本生成から音声合成・動画編集までを自動化するツール。</p>
+        <div class="tech-row">
+          <span class="tech">Python</span><span class="tech">TTS</span>
+        </div>
+      </a>
+
+      <a href="work-pet.html" class="work-card reveal">
+        <div class="visual photo">
+          <img src="assets/pet-frame.jpg" alt="視聴ナッジ用Chrome拡張機能 - 画面に現れるペット" loading="lazy" decoding="async">
+          <span class="num serif">06</span>
+        </div>
+        <div class="tag-line">Browser Extension</div>
+        <h3>視聴ナッジ用Chrome拡張機能</h3>
+        <p class="desc">見すぎるとペットが現れる、デジタルウェルビーイング系拡張。</p>
+        <div class="tech-row">
+          <span class="tech">Chrome Ext.</span><span class="tech">JavaScript</span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -122,7 +143,7 @@
 <!-- MORE / CTA -->
 <section class="more">
   <div class="inner">
-    <h3>一緒に<b>「作る」</b>話をしませんか？</h3>
+    <h3>一緒に<b>「創り」</b>ませんか？</h3>
     <p>業務の自動化、AIを使ったツール開発、Web制作など、お気軽にご相談ください。</p>
     <a href="about.html#contact" class="btn btn-dark">お問い合わせ</a>
   </div>

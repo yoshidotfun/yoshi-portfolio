@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIペルソナによるRAG評価システム | yoshi Portfolio</title>
+  <meta name="description" content="大規模ペルソナデータセットからサンプリングした人物像を用いて、RAGシステムの回答品質を自動評価するパイプライン。ストリーミング取得で評価コストを抑制。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="AIペルソナによるRAG評価システム | yoshi Portfolio">
+  <meta property="og:description" content="大規模ペルソナデータセットを用いてRAGの回答品質を自動評価するパイプライン。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
-    <nav>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="index.html" class="nav-link">Top</a>
       <a href="works.html" class="nav-link active">Works</a>
       <a href="about.html" class="nav-link">About</a>
@@ -33,8 +45,8 @@
         <div class="work-meta">Work 03 — AI / RAG</div>
         <h2>AIペルソナによるRAG評価システム</h2>
         <div class="role">個人開発</div>
-        <p>大規模ペルソナデータセットからサンプリングした人物像に対して、RAG（Retrieval-Augmented Generation）システムの回答が適切かを自動評価するパイプライン。ペルソナごとの属性（年齢・職業・関心など）を自然文に変換してプロンプトに組み込み、模擬インタビューや質問応答シミュレーションを実行する。</p>
-        <p>1.7GB規模のデータセットをストリーミングで取得し、全件をダウンロードせずに必要件数だけサンプリングすることで、評価コストを抑えながら多様なペルソナを検証できるようにした。評価結果はCSVに蓄積し、回答品質の傾向分析に利用できる形に整備している。</p>
+        <p>RAG（検索拡張生成）システムの回答品質を、多様なAIペルソナとの模擬対話で自動評価するパイプラインです。年齢・職業・関心などの属性を持つ人物像をプロンプトに変換し、質問応答をシミュレーションします。</p>
+        <p>1.7GB規模のペルソナデータセットは、全件ダウンロードせずストリーミングで必要な分だけ取得し、評価コストを抑制。結果はCSVに自動集計し、回答品質の傾向分析にそのまま使える形で出力します。</p>
         <ul class="feat-list">
           <li>大規模データセットのストリーミングサンプリング</li>
           <li>ペルソナ属性のプロンプト自動生成</li>
