@@ -134,6 +134,7 @@ nav .nav-cta:hover { background: var(--black); color: var(--paper); }
 .visual.p4::after { content: ''; position: absolute; inset: 0; background-image: repeating-radial-gradient(circle at 30% 120%, transparent 0 22px, var(--gray-2) 22px 23px); opacity: .8; }
 .visual.p5::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, var(--gray-2) 0 1px, transparent 1px 14px); opacity: .8; }
 .visual.p6::after { content: ''; position: absolute; inset: 0; background: repeating-conic-gradient(var(--gray-1) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px; opacity: .9; }
+.visual.p7::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, var(--gray-2) 0 1px, transparent 1px 9px), repeating-linear-gradient(45deg, var(--gray-2) 0 1px, transparent 1px 9px); opacity: .55; }
 
 /* ===== WORK DETAIL ===== */
 .detail-section { padding: 56px 32px 60px; }

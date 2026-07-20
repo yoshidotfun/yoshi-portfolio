@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI自動電話予約システム | yoshi Portfolio</title>
+  <meta name="description" content="TwilioとOpenAI Realtime APIを組み合わせ、AIが24時間電話を受けて自動で予約受付・確定・LINE通知まで完結するリアルタイム音声エージェント。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yoshi Portfolio">
+  <meta property="og:title" content="AI自動電話予約システム | yoshi Portfolio">
+  <meta property="og:description" content="Twilio × OpenAI Realtimeによるリアルタイム音声エージェント。24時間自動予約受付システム。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/main.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">yoshi<span class="dot">.</span></a>
+    <button class="nav-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav">
+      <a href="index.html" class="nav-link">Top</a>
+      <a href="works.html" class="nav-link active">Works</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="about.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-item">
+      <div class="detail-visual">
+        <div class="ai-thumb">
+          <style>
+            .ai-thumb {
+              background: #04100a;
+              border-radius: 8px;
+              overflow: hidden;
+              aspect-ratio: 4/3;
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 0;
+              font-family: 'SF Mono', 'Fira Code', monospace;
+            }
+            /* grid overlay */
+            .ai-thumb::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+              background-image:
+                linear-gradient(rgba(0,212,136,.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,136,.06) 1px, transparent 1px);
+              background-size: 28px 28px;
+              pointer-events: none;
+            }
+            .ai-thumb-flow {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              position: relative;
+              z-index: 1;
+            }
+            .ai-node {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 6px;
+            }
+            .ai-icon-wrap {
+              width: 52px;
+              height: 52px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+            }
+            .ai-icon-wrap.phone { background: rgba(0,212,136,.15); border: 1.5px solid rgba(0,212,136,.5); }
+            .ai-icon-wrap.ai    { background: rgba(64,180,255,.15); border: 1.5px solid rgba(64,180,255,.5); }
+            .ai-icon-wrap.done  { background: rgba(0,212,136,.2);  border: 1.5px solid #00d488; }
+            .ai-icon-wrap.line  { background: rgba(0,185,0,.15);   border: 1.5px solid rgba(0,185,0,.5); }
+            .ai-label {
+              font-size: 10px;
+              color: rgba(200,230,215,.55);
+              letter-spacing: .04em;
+              white-space: nowrap;
+            }
+            /* phone ring animation */
+            @keyframes phone-ring {
+              0%,100% { transform: rotate(0deg); }
+              10%      { transform: rotate(-18deg); }
+              20%      { transform: rotate(18deg); }
+              30%      { transform: rotate(-12deg); }
+              40%      { transform: rotate(12deg); }
+              50%      { transform: rotate(-6deg); }
+              60%      { transform: rotate(6deg); }
+              70%      { transform: rotate(0deg); }
+            }
+            .phone-svg { animation: phone-ring 2.4s ease-in-out infinite; }
+            /* pulse ring around phone */
+            @keyframes pulse-ring {
+              0%   { transform: scale(1); opacity: .7; }
+              100% { transform: scale(1.9); opacity: 0; }
+            }
+            .ai-icon-wrap.phone::after {
+              content: '';
+              position: absolute;
+              inset: -3px;
+              border-radius: 50%;
+              border: 1.5px solid rgba(0,212,136,.6);
+              animation: pulse-ring 2.4s ease-out infinite;
+            }
+            /* arrow connector */
+            .ai-arrow {
+              width: 36px;
+              height: 2px;
+              background: linear-gradient(90deg, rgba(0,212,136,.4), rgba(64,180,255,.4));
+              position: relative;
+              flex-shrink: 0;
+            }
+            .ai-arrow::after {
+              content: '';
+              position: absolute;
+              right: -1px;
+              top: -3px;
+              border: 4px solid transparent;
+              border-left-color: rgba(64,180,255,.5);
+              border-right: none;
+            }
+            .ai-arrow.to-done {
+              background: linear-gradient(90deg, rgba(64,180,255,.4), rgba(0,212,136,.6));
+            }
+            .ai-arrow.to-done::after { border-left-color: rgba(0,212,136,.7); }
+            .ai-arrow.to-line {
+              background: linear-gradient(90deg, rgba(0,212,136,.4), rgba(0,185,0,.5));
+            }
+            .ai-arrow.to-line::after { border-left-color: rgba(0,185,0,.6); }
+            /* data packets travelling along arrows */
+            @keyframes packet-travel {
+              0%   { left: 0;   opacity: 0; }
+              10%  { opacity: 1; }
+              90%  { opacity: 1; }
+              100% { left: 100%; opacity: 0; }
+            }
+            .ai-packet {
+              position: absolute;
+              top: -3px;
+              width: 7px;
+              height: 7px;
+              border-radius: 50%;
+              background: #00d488;
+              animation: packet-travel 1.4s linear infinite;
+            }
+            .ai-arrow:nth-child(2) .ai-packet { animation-delay: 0s; }
+            .ai-arrow.to-done .ai-packet { background: #40b4ff; animation-delay: .7s; }
+            .ai-arrow.to-line  .ai-packet { background: #00b900; animation-delay: .35s; }
+            /* AI brain pulse */
+            @keyframes ai-pulse {
+              0%,100% { box-shadow: 0 0 0 0 rgba(64,180,255,0); }
+              50%     { box-shadow: 0 0 0 8px rgba(64,180,255,.15); }
+            }
+            .ai-icon-wrap.ai { animation: ai-pulse 1.4s ease-in-out infinite; }
+            /* done check pop */
+            @keyframes check-pop {
+              0%,60% { transform: scale(0.7); opacity: .4; }
+              75%     { transform: scale(1.15); opacity: 1; }
+              100%    { transform: scale(1); opacity: 1; }
+            }
+            .done-svg { animation: check-pop 2.4s ease-out infinite; }
+            /* waveform bars */
+            .ai-wave {
+              display: flex;
+              align-items: center;
+              gap: 3px;
+              height: 28px;
+              position: relative;
+              z-index: 1;
+              margin: 16px 0 2px;
+            }
+            .ai-wave-bar {
+              width: 4px;
+              border-radius: 2px;
+              background: rgba(0,212,136,.7);
+              transform-origin: bottom;
+            }
+            @keyframes bar1 { 0%,100%{height:6px}  25%{height:22px} 50%{height:10px} 75%{height:18px} }
+            @keyframes bar2 { 0%,100%{height:14px} 25%{height:6px}  50%{height:22px} 75%{height:8px}  }
+            @keyframes bar3 { 0%,100%{height:22px} 25%{height:10px} 50%{height:6px}  75%{height:20px} }
+            @keyframes bar4 { 0%,100%{height:8px}  25%{height:20px} 50%{height:16px} 75%{height:6px}  }
+            @keyframes bar5 { 0%,100%{height:18px} 25%{height:8px}  50%{height:22px} 75%{height:12px} }
+            @keyframes bar6 { 0%,100%{height:10px} 25%{height:22px} 50%{height:8px}  75%{height:22px} }
+            @keyframes bar7 { 0%,100%{height:20px} 25%{height:6px}  50%{height:14px} 75%{height:8px}  }
+            .ai-wave-bar:nth-child(1) { animation: bar1 .9s ease-in-out infinite; }
+            .ai-wave-bar:nth-child(2) { animation: bar2 .9s ease-in-out infinite .1s; }
+            .ai-wave-bar:nth-child(3) { animation: bar3 .9s ease-in-out infinite .2s; }
+            .ai-wave-bar:nth-child(4) { animation: bar4 .9s ease-in-out infinite .3s; }
+            .ai-wave-bar:nth-child(5) { animation: bar5 .9s ease-in-out infinite .4s; }
+            .ai-wave-bar:nth-child(6) { animation: bar6 .9s ease-in-out infinite .5s; }
+            .ai-wave-bar:nth-child(7) { animation: bar7 .9s ease-in-out infinite .6s; }
+            /* stat */
+            .ai-stat {
+              position: relative;
+              z-index: 1;
+              margin-top: 18px;
+              text-align: center;
+            }
+            .ai-stat-num {
+              font-size: 28px;
+              font-weight: 700;
+              color: #00d488;
+              letter-spacing: -.02em;
+              line-height: 1;
+            }
+            .ai-stat-label {
+              font-size: 11px;
+              color: rgba(200,230,215,.45);
+              margin-top: 4px;
+              letter-spacing: .06em;
+            }
+            /* badge */
+            .ai-badge {
+              position: absolute;
+              top: 14px;
+              right: 14px;
+              font-size: 10px;
+              color: #00d488;
+              background: rgba(0,212,136,.12);
+              border: 1px solid rgba(0,212,136,.3);
+              border-radius: 4px;
+              padding: 2px 8px;
+              letter-spacing: .08em;
+              z-index: 1;
+            }
+            @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+            .ai-badge::before {
+              content: '●';
+              font-size: 7px;
+              margin-right: 5px;
+              animation: blink 1.2s ease-in-out infinite;
+            }
+          </style>
+
+          <span class="ai-badge">LIVE</span>
+
+          <div class="ai-thumb-flow">
+            <!-- Phone node -->
+            <div class="ai-node">
+              <div class="ai-icon-wrap phone">
+                <svg class="phone-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#00d488"/>
+                </svg>
+              </div>
+              <span class="ai-label">着信</span>
+            </div>
+
+            <div class="ai-arrow">
+              <div class="ai-packet"></div>
+            </div>
+
+            <!-- AI node -->
+            <div class="ai-node">
+              <div class="ai-icon-wrap ai">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                  <circle cx="13" cy="13" r="9" stroke="#40b4ff" stroke-width="1.5" fill="none"/>
+                  <circle cx="13" cy="13" r="3.5" fill="#40b4ff" opacity=".8"/>
+                  <line x1="13" y1="4"  x2="13" y2="7"  stroke="#40b4ff" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="13" y1="19" x2="13" y2="22" stroke="#40b4ff" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="4"  y1="13" x2="7"  y2="13" stroke="#40b4ff" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="19" y1="13" x2="22" y2="13" stroke="#40b4ff" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="ai-label">AI処理</span>
+            </div>
+
+            <div class="ai-arrow to-done">
+              <div class="ai-packet"></div>
+            </div>
+
+            <!-- Done node -->
+            <div class="ai-node">
+              <div class="ai-icon-wrap done">
+                <svg class="done-svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                  <circle cx="13" cy="13" r="9" fill="rgba(0,212,136,.25)"/>
+                  <polyline points="8,13 11.5,16.5 18,9.5" stroke="#00d488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </div>
+              <span class="ai-label">予約確定</span>
+            </div>
+
+            <div class="ai-arrow to-line">
+              <div class="ai-packet"></div>
+            </div>
+
+            <!-- LINE node -->
+            <div class="ai-node">
+              <div class="ai-icon-wrap line">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                  <rect x="4" y="5" width="18" height="14" rx="4" fill="rgba(0,185,0,.3)" stroke="rgba(0,185,0,.7)" stroke-width="1.2"/>
+                  <path d="M13 9c-3.3 0-6 2-6 4.5 0 1.6 1.1 3 2.8 3.8-.1.5-.5 1.7-.5 1.7s1.3-.7 2.2-1.2c.5.1.9.2 1.5.2 3.3 0 6-2 6-4.5S16.3 9 13 9z" fill="#00b900"/>
+                </svg>
+              </div>
+              <span class="ai-label">LINE通知</span>
+            </div>
+          </div>
+
+          <!-- waveform -->
+          <div class="ai-wave">
+            <div class="ai-wave-bar"></div>
+            <div class="ai-wave-bar"></div>
+            <div class="ai-wave-bar"></div>
+            <div class="ai-wave-bar"></div>
+            <div class="ai-wave-bar"></div>
+            <div class="ai-wave-bar"></div>
+            <div class="ai-wave-bar"></div>
+          </div>
+
+          <!-- stat -->
+          <div class="ai-stat">
+            <div class="ai-stat-num">&lt; 0.5s</div>
+            <div class="ai-stat-label">平均応答レイテンシ</div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="work-meta">Work 07 — AI Voice Agent</div>
+        <h2>AI自動電話予約システム</h2>
+        <div class="role">個人開発 / degitail 事業プロダクト</div>
+        <p>飲食店・美容室・整体院などの「電話予約」を、AIが24時間自動で受付・確定・通知まで完結するシステムです。Twilioで電話を受け、OpenAI Realtime APIとWebSocketで音声をリアルタイムに処理し、AIが自然な日本語で顧客と会話して予約を進めます。</p>
+        <p>従来のSTT→LLM→TTSのパイプラインでは3〜5秒の遅延が発生しますが、OpenAI Realtime APIを採用することで0.5秒以下の応答を実現。電話会話として違和感のないレイテンシを確保しています。予約確定後はGoogleスプレッドシートに自動記録し、店舗オーナーへLINEでプッシュ通知を送る仕組みまでを一気通貫で構築しました。</p>
+        <ul class="feat-list">
+          <li>Twilio Media Streams × OpenAI Realtime APIによる0.5秒以下のリアルタイム音声応答</li>
+          <li>Function Callingを用いた予約フローの自動制御（空き確認・予約確定）</li>
+          <li>Google Sheets APIによる予約データの自動記録</li>
+          <li>LINE Messaging APIによるオーナーへのリアルタイムプッシュ通知</li>
+          <li>店舗ごとのシステムプロンプト・設定を管理するマルチテナント構成</li>
+          <li>Railwayへのデプロイを想定したWebSocket対応サーバー設計</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Node.js</span>
+          <span class="tech">OpenAI Realtime API</span>
+          <span class="tech">Twilio Media Streams</span>
+          <span class="tech">WebSocket</span>
+          <span class="tech">Google Sheets API</span>
+          <span class="tech">LINE Messaging API</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="detail-pager">
+  <a href="work-pet.html">&larr; Prev</a>
+  <a href="works.html" class="back">All Works</a>
+  <span style="visibility:hidden;">Next &rarr;</span>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">yoshi</a>
+    <nav class="footer-nav">
+      <a href="index.html">Top</a>
+      <a href="works.html">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>Individual Developer Portfolio</span>
+    <span>&copy; 2026 yoshi. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
